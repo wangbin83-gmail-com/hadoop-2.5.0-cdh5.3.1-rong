@@ -146,6 +146,11 @@ public enum DistCpOptionSwitch {
       new Option("append", false,
           "Reuse existing data in target files and append new data to them if possible")),
 
+  DIFF(DistCpConstants.CONF_LABEL_DIFF,
+      new Option("diff", false,
+      "Use snapshot diff report to identify the difference between source and target"),
+      2),
+
   /**
    * Should DisctpExecution be blocking
    */
@@ -172,6 +177,11 @@ public enum DistCpOptionSwitch {
   DistCpOptionSwitch(String confLabel, Option option) {
     this.confLabel = confLabel;
     this.option = option;
+  }
+
+  DistCpOptionSwitch(String confLabel, Option option, int argNum) {
+    this(confLabel, option);
+    this.option.setArgs(argNum);
   }
 
   /**
