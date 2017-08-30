@@ -1,0 +1,1502 @@
+From d00c97f0cfc33a7f6348317205bbfb037091bd75 Mon Sep 17 00:00:00 2001
+From: Jenkins slave <kitchen-build@cloudera.com>
+Date: Fri, 23 Jan 2015 11:47:04 -0800
+Subject: [PATCH 784/791] Preparing for CDH5.3.1 release
+
+---
+ hadoop-assemblies/pom.xml                          |    4 ++--
+ hadoop-client/pom.xml                              |    4 ++--
+ hadoop-common-project/hadoop-annotations/pom.xml   |    4 ++--
+ hadoop-common-project/hadoop-auth-examples/pom.xml |    4 ++--
+ hadoop-common-project/hadoop-auth/pom.xml          |    4 ++--
+ hadoop-common-project/hadoop-common/pom.xml        |    4 ++--
+ hadoop-common-project/hadoop-kms/pom.xml           |    4 ++--
+ hadoop-common-project/hadoop-minikdc/pom.xml       |    4 ++--
+ hadoop-common-project/hadoop-nfs/pom.xml           |    4 ++--
+ hadoop-common-project/pom.xml                      |    4 ++--
+ hadoop-dist/pom.xml                                |    4 ++--
+ hadoop-hdfs-project/hadoop-hdfs-httpfs/pom.xml     |    4 ++--
+ hadoop-hdfs-project/hadoop-hdfs-nfs/pom.xml        |    4 ++--
+ hadoop-hdfs-project/hadoop-hdfs/pom.xml            |    4 ++--
+ .../hadoop-hdfs/src/contrib/bkjournal/pom.xml      |    4 ++--
+ hadoop-hdfs-project/pom.xml                        |    4 ++--
+ .../hadoop-mapreduce-client-app/pom.xml            |    4 ++--
+ .../hadoop-mapreduce-client-common/pom.xml         |    4 ++--
+ .../hadoop-mapreduce-client-core/pom.xml           |    4 ++--
+ .../hadoop-mapreduce-client-hs-plugins/pom.xml     |    4 ++--
+ .../hadoop-mapreduce-client-hs/pom.xml             |    4 ++--
+ .../hadoop-mapreduce-client-jobclient/pom.xml      |    4 ++--
+ .../hadoop-mapreduce-client-nativetask/pom.xml     |    4 ++--
+ .../hadoop-mapreduce-client-shuffle/pom.xml        |    4 ++--
+ .../hadoop-mapreduce-client/pom.xml                |    4 ++--
+ .../hadoop-mapreduce-examples/pom.xml              |    4 ++--
+ hadoop-mapreduce-project/pom.xml                   |    4 ++--
+ hadoop-mapreduce1-project/build.xml                |    2 +-
+ hadoop-mapreduce1-project/cloudera-pom.xml         |    4 ++--
+ .../cloudera/maven-packaging/hadoop-client/pom.xml |    4 ++--
+ .../cloudera/maven-packaging/hadoop-core/pom.xml   |    4 ++--
+ .../maven-packaging/hadoop-examples/pom.xml        |    4 ++--
+ .../maven-packaging/hadoop-minicluster/pom.xml     |    4 ++--
+ .../cloudera/maven-packaging/hadoop-mrunit/pom.xml |    4 ++--
+ .../maven-packaging/hadoop-streaming/pom.xml       |    4 ++--
+ .../maven-packaging/hadoop-tarball/pom.xml         |    4 ++--
+ .../cloudera/maven-packaging/hadoop-test/pom.xml   |    4 ++--
+ .../cloudera/maven-packaging/hadoop-tools/pom.xml  |    4 ++--
+ .../cloudera/maven-packaging/pom.xml               |    4 ++--
+ hadoop-mapreduce1-project/ivy/libraries.properties |    4 ++--
+ hadoop-maven-plugins/pom.xml                       |    2 +-
+ hadoop-minicluster/pom.xml                         |    4 ++--
+ hadoop-project-dist/pom.xml                        |    4 ++--
+ hadoop-project/pom.xml                             |    4 ++--
+ hadoop-tools/hadoop-archives/pom.xml               |    4 ++--
+ hadoop-tools/hadoop-aws/pom.xml                    |    4 ++--
+ hadoop-tools/hadoop-azure/pom.xml                  |    4 ++--
+ hadoop-tools/hadoop-datajoin/pom.xml               |    4 ++--
+ hadoop-tools/hadoop-distcp/pom.xml                 |    4 ++--
+ hadoop-tools/hadoop-extras/pom.xml                 |    4 ++--
+ hadoop-tools/hadoop-gridmix/pom.xml                |    4 ++--
+ hadoop-tools/hadoop-openstack/pom.xml              |    4 ++--
+ hadoop-tools/hadoop-pipes/pom.xml                  |    4 ++--
+ hadoop-tools/hadoop-rumen/pom.xml                  |    4 ++--
+ hadoop-tools/hadoop-sls/pom.xml                    |    4 ++--
+ hadoop-tools/hadoop-streaming/pom.xml              |    4 ++--
+ hadoop-tools/hadoop-tools-dist/pom.xml             |    4 ++--
+ hadoop-tools/pom.xml                               |    4 ++--
+ .../hadoop-yarn/hadoop-yarn-api/pom.xml            |    4 ++--
+ .../pom.xml                                        |    4 ++--
+ .../pom.xml                                        |    4 ++--
+ .../hadoop-yarn/hadoop-yarn-applications/pom.xml   |    4 ++--
+ .../hadoop-yarn/hadoop-yarn-client/pom.xml         |    4 ++--
+ .../hadoop-yarn/hadoop-yarn-common/pom.xml         |    4 ++--
+ .../pom.xml                                        |    4 ++--
+ .../hadoop-yarn-server-common/pom.xml              |    4 ++--
+ .../hadoop-yarn-server-nodemanager/pom.xml         |    4 ++--
+ .../hadoop-yarn-server-resourcemanager/pom.xml     |    4 ++--
+ .../hadoop-yarn-server-tests/pom.xml               |    4 ++--
+ .../hadoop-yarn-server-web-proxy/pom.xml           |    4 ++--
+ .../hadoop-yarn/hadoop-yarn-server/pom.xml         |    4 ++--
+ .../hadoop-yarn/hadoop-yarn-site/pom.xml           |    4 ++--
+ hadoop-yarn-project/hadoop-yarn/pom.xml            |    4 ++--
+ hadoop-yarn-project/pom.xml                        |    4 ++--
+ pom.xml                                            |    4 ++--
+ 75 files changed, 148 insertions(+), 148 deletions(-)
+
+diff --git a/hadoop-assemblies/pom.xml b/hadoop-assemblies/pom.xml
+index 7f826c6..47790b3 100644
+--- a/hadoop-assemblies/pom.xml
++++ b/hadoop-assemblies/pom.xml
+@@ -23,12 +23,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-assemblies</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>Apache Hadoop Assemblies</name>
+   <description>Apache Hadoop Assemblies</description>
+ 
+diff --git a/hadoop-client/pom.xml b/hadoop-client/pom.xml
+index 6cc0e0b..82c9886 100644
+--- a/hadoop-client/pom.xml
++++ b/hadoop-client/pom.xml
+@@ -18,12 +18,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project-dist</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project-dist</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-client</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>jar</packaging>
+ 
+   <description>Apache Hadoop Client</description>
+diff --git a/hadoop-common-project/hadoop-annotations/pom.xml b/hadoop-common-project/hadoop-annotations/pom.xml
+index 75be6cb..5bc64cd 100644
+--- a/hadoop-common-project/hadoop-annotations/pom.xml
++++ b/hadoop-common-project/hadoop-annotations/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-annotations</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Annotations</description>
+   <name>Apache Hadoop Annotations</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-common-project/hadoop-auth-examples/pom.xml b/hadoop-common-project/hadoop-auth-examples/pom.xml
+index d8e1825..61474ce 100644
+--- a/hadoop-common-project/hadoop-auth-examples/pom.xml
++++ b/hadoop-common-project/hadoop-auth-examples/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-auth-examples</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>war</packaging>
+ 
+   <name>Apache Hadoop Auth Examples</name>
+diff --git a/hadoop-common-project/hadoop-auth/pom.xml b/hadoop-common-project/hadoop-auth/pom.xml
+index a0c53b3..9294645 100644
+--- a/hadoop-common-project/hadoop-auth/pom.xml
++++ b/hadoop-common-project/hadoop-auth/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-auth</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>jar</packaging>
+ 
+   <name>Apache Hadoop Auth</name>
+diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
+index 618b198..7639366 100644
+--- a/hadoop-common-project/hadoop-common/pom.xml
++++ b/hadoop-common-project/hadoop-common/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project-dist</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project-dist</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-common</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Common</description>
+   <name>Apache Hadoop Common</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-common-project/hadoop-kms/pom.xml b/hadoop-common-project/hadoop-kms/pom.xml
+index f39ba38..275578c 100644
+--- a/hadoop-common-project/hadoop-kms/pom.xml
++++ b/hadoop-common-project/hadoop-kms/pom.xml
+@@ -22,12 +22,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-kms</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>war</packaging>
+ 
+   <name>Apache Hadoop KMS</name>
+diff --git a/hadoop-common-project/hadoop-minikdc/pom.xml b/hadoop-common-project/hadoop-minikdc/pom.xml
+index 8de04e2..3894a0c 100644
+--- a/hadoop-common-project/hadoop-minikdc/pom.xml
++++ b/hadoop-common-project/hadoop-minikdc/pom.xml
+@@ -18,13 +18,13 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-minikdc</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop MiniKDC</description>
+   <name>Apache Hadoop MiniKDC</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-common-project/hadoop-nfs/pom.xml b/hadoop-common-project/hadoop-nfs/pom.xml
+index 58ea226..f49baf0 100644
+--- a/hadoop-common-project/hadoop-nfs/pom.xml
++++ b/hadoop-common-project/hadoop-nfs/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-nfs</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>jar</packaging>
+ 
+   <name>Apache Hadoop NFS</name>
+diff --git a/hadoop-common-project/pom.xml b/hadoop-common-project/pom.xml
+index f612286..06c6034 100644
+--- a/hadoop-common-project/pom.xml
++++ b/hadoop-common-project/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-common-project</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Common Project</description>
+   <name>Apache Hadoop Common Project</name>
+   <packaging>pom</packaging>
+diff --git a/hadoop-dist/pom.xml b/hadoop-dist/pom.xml
+index fd074a1..7029da0 100644
+--- a/hadoop-dist/pom.xml
++++ b/hadoop-dist/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-dist</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Distribution</description>
+   <name>Apache Hadoop Distribution</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-httpfs/pom.xml b/hadoop-hdfs-project/hadoop-hdfs-httpfs/pom.xml
+index ed5cfb5..b1c011b 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs-httpfs/pom.xml
++++ b/hadoop-hdfs-project/hadoop-hdfs-httpfs/pom.xml
+@@ -22,12 +22,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-hdfs-httpfs</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>war</packaging>
+ 
+   <name>Apache Hadoop HttpFS</name>
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-nfs/pom.xml b/hadoop-hdfs-project/hadoop-hdfs-nfs/pom.xml
+index 49b9a91..239bfa5 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs-nfs/pom.xml
++++ b/hadoop-hdfs-project/hadoop-hdfs-nfs/pom.xml
+@@ -20,12 +20,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-hdfs-nfs</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop HDFS-NFS</description>
+   <name>Apache Hadoop HDFS-NFS</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/pom.xml b/hadoop-hdfs-project/hadoop-hdfs/pom.xml
+index d7d0944..72207d9 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/pom.xml
++++ b/hadoop-hdfs-project/hadoop-hdfs/pom.xml
+@@ -20,12 +20,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project-dist</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project-dist</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-hdfs</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop HDFS</description>
+   <name>Apache Hadoop HDFS</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/src/contrib/bkjournal/pom.xml b/hadoop-hdfs-project/hadoop-hdfs/src/contrib/bkjournal/pom.xml
+index ad991d4..327cfc7 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/src/contrib/bkjournal/pom.xml
++++ b/hadoop-hdfs-project/hadoop-hdfs/src/contrib/bkjournal/pom.xml
+@@ -20,13 +20,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../../../../hadoop-project</relativePath>
+   </parent>
+ 
+   <groupId>org.apache.hadoop.contrib</groupId>
+   <artifactId>hadoop-hdfs-bkjournal</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop HDFS BookKeeper Journal</description>
+   <name>Apache Hadoop HDFS BookKeeper Journal</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-hdfs-project/pom.xml b/hadoop-hdfs-project/pom.xml
+index 54e8370..9755e10 100644
+--- a/hadoop-hdfs-project/pom.xml
++++ b/hadoop-hdfs-project/pom.xml
+@@ -20,12 +20,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-hdfs-project</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop HDFS Project</description>
+   <name>Apache Hadoop HDFS Project</name>
+   <packaging>pom</packaging>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-app/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-app/pom.xml
+index 7106fef..84c58a3 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-app/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-app/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-app</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-app</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-common/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-common/pom.xml
+index 9608a63..098dcf1 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-common/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-common/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-common</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-common</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/pom.xml
+index d4c4d12..de8da0d 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-core</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-core</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs-plugins/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs-plugins/pom.xml
+index 61c6dc6..325eedf 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs-plugins/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs-plugins/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-hs-plugins</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-hs-plugins</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs/pom.xml
+index 11f105f..9b93f9b 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-hs</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-hs</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-jobclient/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-jobclient/pom.xml
+index 83ded52..9a5c347 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-jobclient/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-jobclient/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-jobclient</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-nativetask/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-nativetask/pom.xml
+index 0045443..9355057 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-nativetask/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-nativetask/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-nativetask</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-nativetask</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-shuffle/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-shuffle/pom.xml
+index 32f3d61..ca70604 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-shuffle/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-shuffle/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-mapreduce-client</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client-shuffle</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client-shuffle</name>
+ 
+   <properties>
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-client/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-client/pom.xml
+index b159b61..1056b59 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-client/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-client/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-client</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-mapreduce-client</name>
+   <packaging>pom</packaging>
+ 
+diff --git a/hadoop-mapreduce-project/hadoop-mapreduce-examples/pom.xml b/hadoop-mapreduce-project/hadoop-mapreduce-examples/pom.xml
+index fdd0e1e..0d3c6e2 100644
+--- a/hadoop-mapreduce-project/hadoop-mapreduce-examples/pom.xml
++++ b/hadoop-mapreduce-project/hadoop-mapreduce-examples/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce-examples</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop MapReduce Examples</description>
+   <name>Apache Hadoop MapReduce Examples</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-mapreduce-project/pom.xml b/hadoop-mapreduce-project/pom.xml
+index e0b0d6c..1e43c0e 100644
+--- a/hadoop-mapreduce-project/pom.xml
++++ b/hadoop-mapreduce-project/pom.xml
+@@ -18,12 +18,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mapreduce</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   <name>hadoop-mapreduce</name>
+   <url>http://hadoop.apache.org/mapreduce/</url>
+diff --git a/hadoop-mapreduce1-project/build.xml b/hadoop-mapreduce1-project/build.xml
+index 196ad05..149aa1a 100644
+--- a/hadoop-mapreduce1-project/build.xml
++++ b/hadoop-mapreduce1-project/build.xml
+@@ -54,7 +54,7 @@
+  
+   <property name="Name" value="Hadoop"/>
+   <property name="name" value="hadoop"/>
+-  <property name="version" value="2.5.0-mr1-cdh5.3.0"/>
++  <property name="version" value="2.5.0-mr1-cdh5.3.1"/>
+   <property name="final.name" value="${name}-${version}"/>
+   <property name="test.final.name" value="${name}-test-${version}"/>
+   <property name="year" value="2009"/>
+diff --git a/hadoop-mapreduce1-project/cloudera-pom.xml b/hadoop-mapreduce1-project/cloudera-pom.xml
+index a985883..bc34510 100644
+--- a/hadoop-mapreduce1-project/cloudera-pom.xml
++++ b/hadoop-mapreduce1-project/cloudera-pom.xml
+@@ -26,13 +26,13 @@ NOTE - This POM is used for Cloudera's build and packaging process.
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>cloudera/maven-packaging/pom.xml</relativePath>
+   </parent>
+   
+   <groupId>com.cloudera.cdh</groupId>
+   <artifactId>hadoop-ant</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   
+   <description>Maven wrapper for Ant Hadoop build</description>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-client/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-client/pom.xml
+index f13ba75..ddeec3f 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-client/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-client/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-client</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>jar</packaging>
+ 
+   <description>Apache Hadoop Client</description>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-core/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-core/pom.xml
+index 45e73a3..a482ab6 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-core/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-core/pom.xml
+@@ -23,13 +23,13 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-core</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   
+   <name>hadoop-core</name>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-examples/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-examples/pom.xml
+index 09f1698..9ab20d5 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-examples/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-examples/pom.xml
+@@ -24,13 +24,13 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-examples</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   
+   <name>hadoop-examples</name>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-minicluster/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-minicluster/pom.xml
+index c63c840..a6397d4 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-minicluster/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-minicluster/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-minicluster</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>jar</packaging>
+ 
+   <description>Apache Hadoop Mini-Cluster</description>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-mrunit/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-mrunit/pom.xml
+index c4d83fe..c2d5b2a 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-mrunit/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-mrunit/pom.xml
+@@ -24,13 +24,13 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-mrunit</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   
+   <name>hadoop-mrunit</name>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-streaming/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-streaming/pom.xml
+index b1a3155..c3f58a0 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-streaming/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-streaming/pom.xml
+@@ -24,13 +24,13 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-streaming</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   
+   <name>hadoop-streaming</name>
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tarball/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tarball/pom.xml
+index c2e9657..d2cc39d 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tarball/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tarball/pom.xml
+@@ -24,14 +24,14 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-tarball</artifactId>
+   <packaging>pom</packaging>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   
+   <name>hadoop-tarball</name>
+   
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-test/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-test/pom.xml
+index 4686f07..7a9ecc6 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-test/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-test/pom.xml
+@@ -24,14 +24,14 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-test</artifactId>
+   <packaging>pom</packaging>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   
+   <name>hadoop-test</name>
+   
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tools/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tools/pom.xml
+index a9c89ef..5b08dfc 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tools/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/hadoop-tools/pom.xml
+@@ -24,14 +24,14 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>hadoop-root</artifactId>
+-    <version>2.5.0-mr1-cdh5.3.0</version>
++    <version>2.5.0-mr1-cdh5.3.1</version>
+     <relativePath>../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-tools</artifactId>
+   <packaging>pom</packaging>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   
+   <name>hadoop-tools</name>
+   
+diff --git a/hadoop-mapreduce1-project/cloudera/maven-packaging/pom.xml b/hadoop-mapreduce1-project/cloudera/maven-packaging/pom.xml
+index 102591a..b35cd30 100644
+--- a/hadoop-mapreduce1-project/cloudera/maven-packaging/pom.xml
++++ b/hadoop-mapreduce1-project/cloudera/maven-packaging/pom.xml
+@@ -21,13 +21,13 @@
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>cdh-root</artifactId>
+-    <version>5.3.0</version>
++    <version>5.3.1</version>
+     <relativePath>../../../../../pom.xml</relativePath>
+   </parent>
+   
+   <groupId>com.cloudera.cdh</groupId>
+   <artifactId>hadoop-root</artifactId>
+-  <version>2.5.0-mr1-cdh5.3.0</version>
++  <version>2.5.0-mr1-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   
+   <description>Hadoop root</description>
+diff --git a/hadoop-mapreduce1-project/ivy/libraries.properties b/hadoop-mapreduce1-project/ivy/libraries.properties
+index d3099f2..4d67e2e 100644
+--- a/hadoop-mapreduce1-project/ivy/libraries.properties
++++ b/hadoop-mapreduce1-project/ivy/libraries.properties
+@@ -42,8 +42,8 @@ ftplet-api.version=1.0.0
+ ftpserver-core.version=1.0.0
+ ftpserver-deprecated.version=1.0.0-M2
+ 
+-hadoop-common.version=2.5.0-cdh5.3.0
+-hadoop-hdfs.version=2.5.0-cdh5.3.0
++hadoop-common.version=2.5.0-cdh5.3.1
++hadoop-hdfs.version=2.5.0-cdh5.3.1
+ 
+ hsqldb.version=1.8.0.10
+ 
+diff --git a/hadoop-maven-plugins/pom.xml b/hadoop-maven-plugins/pom.xml
+index 6f8a10e..b71cc05 100644
+--- a/hadoop-maven-plugins/pom.xml
++++ b/hadoop-maven-plugins/pom.xml
+@@ -19,7 +19,7 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+diff --git a/hadoop-minicluster/pom.xml b/hadoop-minicluster/pom.xml
+index 84669c6..b0d07d5 100644
+--- a/hadoop-minicluster/pom.xml
++++ b/hadoop-minicluster/pom.xml
+@@ -18,12 +18,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-minicluster</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>jar</packaging>
+ 
+   <description>Apache Hadoop Mini-Cluster</description>
+diff --git a/hadoop-project-dist/pom.xml b/hadoop-project-dist/pom.xml
+index 1781201..b482578 100644
+--- a/hadoop-project-dist/pom.xml
++++ b/hadoop-project-dist/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-project-dist</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Project Dist POM</description>
+   <name>Apache Hadoop Project Dist POM</name>
+   <packaging>pom</packaging>
+diff --git a/hadoop-project/pom.xml b/hadoop-project/pom.xml
+index 172c1a1..c923adf 100644
+--- a/hadoop-project/pom.xml
++++ b/hadoop-project/pom.xml
+@@ -20,11 +20,11 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-main</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-project</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Project POM</description>
+   <name>Apache Hadoop Project POM</name>
+   <packaging>pom</packaging>
+diff --git a/hadoop-tools/hadoop-archives/pom.xml b/hadoop-tools/hadoop-archives/pom.xml
+index 30cca04..f75a433 100644
+--- a/hadoop-tools/hadoop-archives/pom.xml
++++ b/hadoop-tools/hadoop-archives/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-archives</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Archives</description>
+   <name>Apache Hadoop Archives</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-aws/pom.xml b/hadoop-tools/hadoop-aws/pom.xml
+index 38a2b14..7fd1807 100644
+--- a/hadoop-tools/hadoop-aws/pom.xml
++++ b/hadoop-tools/hadoop-aws/pom.xml
+@@ -19,11 +19,11 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <artifactId>hadoop-aws</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>Apache Hadoop Amazon Web Services support</name>
+   <description>
+     This module contains code to support integration with Amazon Web Services.
+diff --git a/hadoop-tools/hadoop-azure/pom.xml b/hadoop-tools/hadoop-azure/pom.xml
+index 91e2b7b..039a38f 100644
+--- a/hadoop-tools/hadoop-azure/pom.xml
++++ b/hadoop-tools/hadoop-azure/pom.xml
+@@ -19,11 +19,11 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <artifactId>hadoop-azure</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>Apache Hadoop Azure support</name>
+   <description>
+     This module contains code to support integration with Azure.
+diff --git a/hadoop-tools/hadoop-datajoin/pom.xml b/hadoop-tools/hadoop-datajoin/pom.xml
+index b1c486a..8d6da17 100644
+--- a/hadoop-tools/hadoop-datajoin/pom.xml
++++ b/hadoop-tools/hadoop-datajoin/pom.xml
+@@ -17,12 +17,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-datajoin</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Data Join</description>
+   <name>Apache Hadoop Data Join</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-distcp/pom.xml b/hadoop-tools/hadoop-distcp/pom.xml
+index 29cf978..4267e30 100644
+--- a/hadoop-tools/hadoop-distcp/pom.xml
++++ b/hadoop-tools/hadoop-distcp/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-distcp</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Distributed Copy</description>
+   <name>Apache Hadoop Distributed Copy</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-extras/pom.xml b/hadoop-tools/hadoop-extras/pom.xml
+index ca6b94a..99660cb 100644
+--- a/hadoop-tools/hadoop-extras/pom.xml
++++ b/hadoop-tools/hadoop-extras/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-extras</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Extras</description>
+   <name>Apache Hadoop Extras</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-gridmix/pom.xml b/hadoop-tools/hadoop-gridmix/pom.xml
+index cb40bd9..8009742 100644
+--- a/hadoop-tools/hadoop-gridmix/pom.xml
++++ b/hadoop-tools/hadoop-gridmix/pom.xml
+@@ -17,12 +17,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-gridmix</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Gridmix</description>
+   <name>Apache Hadoop Gridmix</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-openstack/pom.xml b/hadoop-tools/hadoop-openstack/pom.xml
+index 921241e..72e5739 100644
+--- a/hadoop-tools/hadoop-openstack/pom.xml
++++ b/hadoop-tools/hadoop-openstack/pom.xml
+@@ -19,11 +19,11 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <artifactId>hadoop-openstack</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>Apache Hadoop OpenStack support</name>
+   <description>
+     This module contains code to support integration with OpenStack.
+diff --git a/hadoop-tools/hadoop-pipes/pom.xml b/hadoop-tools/hadoop-pipes/pom.xml
+index 832117a..58d5125 100644
+--- a/hadoop-tools/hadoop-pipes/pom.xml
++++ b/hadoop-tools/hadoop-pipes/pom.xml
+@@ -17,12 +17,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-pipes</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Pipes</description>
+   <name>Apache Hadoop Pipes</name>
+   <packaging>pom</packaging>
+diff --git a/hadoop-tools/hadoop-rumen/pom.xml b/hadoop-tools/hadoop-rumen/pom.xml
+index f7d58a8..7816f4f 100644
+--- a/hadoop-tools/hadoop-rumen/pom.xml
++++ b/hadoop-tools/hadoop-rumen/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-rumen</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Rumen</description>
+   <name>Apache Hadoop Rumen</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-sls/pom.xml b/hadoop-tools/hadoop-sls/pom.xml
+index a44c4d5..17e5996 100644
+--- a/hadoop-tools/hadoop-sls/pom.xml
++++ b/hadoop-tools/hadoop-sls/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-sls</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Scheduler Load Simulator</description>
+   <name>Apache Hadoop Scheduler Load Simulator</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-streaming/pom.xml b/hadoop-tools/hadoop-streaming/pom.xml
+index 25ec87f..79f599e 100644
+--- a/hadoop-tools/hadoop-streaming/pom.xml
++++ b/hadoop-tools/hadoop-streaming/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-streaming</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop MapReduce Streaming</description>
+   <name>Apache Hadoop MapReduce Streaming</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/hadoop-tools-dist/pom.xml b/hadoop-tools/hadoop-tools-dist/pom.xml
+index cf24813..c01f6fd 100644
+--- a/hadoop-tools/hadoop-tools-dist/pom.xml
++++ b/hadoop-tools/hadoop-tools-dist/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project-dist</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project-dist</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-tools-dist</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Tools Dist</description>
+   <name>Apache Hadoop Tools Dist</name>
+   <packaging>jar</packaging>
+diff --git a/hadoop-tools/pom.xml b/hadoop-tools/pom.xml
+index 67069e9..1597057 100644
+--- a/hadoop-tools/pom.xml
++++ b/hadoop-tools/pom.xml
+@@ -20,12 +20,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-tools</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Tools</description>
+   <name>Apache Hadoop Tools</name>
+   <packaging>pom</packaging>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/pom.xml
+index 704dd64..5d3f52c 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-api</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-api</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/pom.xml
+index 6b2d0cd..d310afa 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-applications</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-applications-distributedshell</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-applications-distributedshell</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-unmanaged-am-launcher/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-unmanaged-am-launcher/pom.xml
+index e01d9d5..8429d86 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-unmanaged-am-launcher/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-unmanaged-am-launcher/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-applications</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-applications-unmanaged-am-launcher</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-applications-unmanaged-am-launcher</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/pom.xml
+index 2d179c8..5260db6 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-applications</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-applications</name>
+   <packaging>pom</packaging>
+ 
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-client/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-client/pom.xml
+index 1625aeb..81f4c1c 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-client/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-client/pom.xml
+@@ -17,11 +17,11 @@
+   <parent>
+     <artifactId>hadoop-yarn</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-client</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-client</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml
+index fb9e4d4..30524ce 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-common</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-common</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice/pom.xml
+index 83727e7..82012c5 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice/pom.xml
+@@ -22,12 +22,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-server</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server-applicationhistoryservice</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server-applicationhistoryservice</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common/pom.xml
+index 28eb4de..5bd8b34 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-server</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server-common</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server-common</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-nodemanager/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-nodemanager/pom.xml
+index 355082f..26e0b46 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-nodemanager/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-nodemanager/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-server</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server-nodemanager</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server-nodemanager</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/pom.xml
+index 188c285..a19a22b 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-server</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server-resourcemanager</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server-resourcemanager</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-tests/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-tests/pom.xml
+index d01d574..97b3869 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-tests/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-tests/pom.xml
+@@ -19,11 +19,11 @@
+   <parent>
+     <artifactId>hadoop-yarn-server</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server-tests</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server-tests</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-web-proxy/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-web-proxy/pom.xml
+index b9d978a..ba9ac2d 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-web-proxy/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-web-proxy/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn-server</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server-web-proxy</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server-web-proxy</name>
+ 
+   <properties>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/pom.xml
+index 0603767..98c3089 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-server</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-server</name>
+   <packaging>pom</packaging>
+ 
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-site/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-site/pom.xml
+index 39d23be..549e862 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-site/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-site/pom.xml
+@@ -19,12 +19,12 @@
+   <parent>
+     <artifactId>hadoop-yarn</artifactId>
+     <groupId>org.apache.hadoop</groupId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-site</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <name>hadoop-yarn-site</name>
+   <packaging>pom</packaging>
+ 
+diff --git a/hadoop-yarn-project/hadoop-yarn/pom.xml b/hadoop-yarn-project/hadoop-yarn/pom.xml
+index c149ea7..c261216 100644
+--- a/hadoop-yarn-project/hadoop-yarn/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/pom.xml
+@@ -16,12 +16,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   <name>hadoop-yarn</name>
+ 
+diff --git a/hadoop-yarn-project/pom.xml b/hadoop-yarn-project/pom.xml
+index 68a1a97..e728115 100644
+--- a/hadoop-yarn-project/pom.xml
++++ b/hadoop-yarn-project/pom.xml
+@@ -18,12 +18,12 @@
+   <parent>
+     <groupId>org.apache.hadoop</groupId>
+     <artifactId>hadoop-project</artifactId>
+-    <version>2.5.0-cdh5.3.0</version>
++    <version>2.5.0-cdh5.3.1</version>
+     <relativePath>../hadoop-project</relativePath>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-yarn-project</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <packaging>pom</packaging>
+   <name>hadoop-yarn-project</name>
+   <url>http://hadoop.apache.org/yarn/</url>
+diff --git a/pom.xml b/pom.xml
+index a3e18ac..d43e145 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -19,11 +19,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
+   <parent>
+     <groupId>com.cloudera.cdh</groupId>
+     <artifactId>cdh-root</artifactId>
+-    <version>5.3.0</version>
++    <version>5.3.1</version>
+   </parent>
+   <groupId>org.apache.hadoop</groupId>
+   <artifactId>hadoop-main</artifactId>
+-  <version>2.5.0-cdh5.3.0</version>
++  <version>2.5.0-cdh5.3.1</version>
+   <description>Apache Hadoop Main</description>
+   <name>Apache Hadoop Main</name>
+   <packaging>pom</packaging>
+-- 
+1.7.9.5
+
