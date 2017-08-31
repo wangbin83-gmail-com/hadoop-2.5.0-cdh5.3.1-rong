@@ -70,7 +70,7 @@
     <protobuf.version>${cdh.protobuf.version}</protobuf.version>
     <protoc.path>${env.HADOOP_PROTOC_CDH5_PATH}</protoc.path>
 
-    <zookeeper.version>3.4.6</zookeeper.version>
+    <zookeeper.version>3.4.5-cdh5.3.1</zookeeper.version>
   </properties>
 
   <dependencyManagement>
@@ -932,7 +932,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>2.5.1</version>
           <configuration>
-            <source>1.6</source>
+            <source>1.8</source>
             <target>${targetJavaVersion}</target>
           </configuration>
         </plugin>
@@ -1250,23 +1250,6 @@
       <id>dist</id>
       <build>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <!-- build javadoc jars per jar for publishing to maven -->
-                <id>module-javadocs</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-                <configuration>
-                  <destDir>${project.build.directory}</destDir>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
